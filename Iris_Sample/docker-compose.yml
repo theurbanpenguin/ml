@@ -2,7 +2,7 @@ version: '3'
 
 services:
   iris-classifier:
-    build: .
+    image: iris-classifier
     ports:
       - "8501:8501"
     volumes:
