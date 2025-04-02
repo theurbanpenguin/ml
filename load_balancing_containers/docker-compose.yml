@@ -16,7 +16,7 @@ networks:
 
 services:
   iris-classifier_1:
-    image: theurbanpenguin/iris-classifier
+    image: theurbanpenguin/iris_classifier
     container_name: *service1
     hostname: *service1
     restart: unless-stopped
@@ -24,7 +24,7 @@ services:
       my_custom_network:
 
   iris-classifier_2:
-    image: theurbanpenguin/iris-classifier
+    image: theurbanpenguin/iris_classifier
     container_name: *service2
     hostname: *service2
     restart: unless-stopped
@@ -32,7 +32,7 @@ services:
       my_custom_network:
 
   iris-classifier_3:
-    image: theurbanpenguin/iris-classifier
+    image: theurbanpenguin/iris_classifier
     container_name: *service3
     hostname: *service3
     restart: unless-stopped
