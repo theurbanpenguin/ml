@@ -10,6 +10,7 @@ import pandas as pd
 import os
 import matplotlib.pyplot as plt
 import seaborn as sns
+import socket
 
 # Page configuration
 st.set_page_config(
@@ -40,6 +41,10 @@ def main():
     feature_names = metadata['feature_names']
     target_names = metadata['target_names']
 
+    # Display Hostname, useful to show load balancing
+    hostname = socket.gethostname()
+    st.title(f"Hostname")
+    st.write(f"{hostname}")
     # App title and description
     st.title("Iris Flower Classifier")
     st.write("""
@@ -48,6 +53,8 @@ def main():
     """)
 
     # Create two columns for layout
+    # col1 = 3/5 width and col2 2/5 width
+    # col1 to display sliders and col2 descriptive information
     col1, col2 = st.columns([3, 2])
 
     with col1:

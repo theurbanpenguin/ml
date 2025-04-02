@@ -1,10 +1,6 @@
-version: '3'
-
 services:
   iris-classifier:
     image: iris-classifier
     ports:
       - "8501:8501"
-    volumes:
-      - ./models:/app/models
     restart: unless-stopped
