@@ -1,0 +1,104 @@
+issue_id,issue_description,resolution
+1,Keyboard typing wrong characters,Change Keyboard Language
+2,Keys not responding,Replace Keyboard
+3,System shutting down due to heat,Clean Fan
+4,Keyboard typing incorrect characters,Change Keyboard Language
+5,Unknown error message,Call Support
+6,Fan making loud noise,Clean Fan
+7,Mouse buttons not working,Change Mouse
+8,Disconnected from VPN,Check Connection
+9,Cannot access shared drive,Check Permissions
+10,Keyboard typing weird characters,Change Keyboard Language
+11,Keyboard physically damaged,Replace Keyboard
+12,Frequent system crashes,Call Support
+13,Mouse not moving,Change Mouse
+14,Cannot access shared drive,Check Permissions
+15,Internet not working,Check Connection
+16,Frequent system crashes,Call Support
+17,Unable to install software,Check Permissions
+18,Laptop overheating,Clean Fan
+19,Access denied to folder,Check Permissions
+20,Laptop keyboard not typing,Replace Keyboard
+21,Keyboard language changed after update,Change Keyboard Language
+22,Unable to switch keyboard layout,Change Keyboard Language
+23,Unable to install software,Check Permissions
+24,Keyboard typing @ instead of ",Change Keyboard Language
+25,System shutting down due to heat,Clean Fan
+26,Laptop overheating,Clean Fan
+27,Unknown error message,Call Support
+28,Keyboard language changed after update,Change Keyboard Language
+29,Keys not responding,Replace Keyboard
+30,Wireless mouse not connecting,Change Mouse
+31,Mouse buttons not working,Change Mouse
+32,Laptop keyboard not typing,Replace Keyboard
+33,Cannot access shared drive,Check Permissions
+34,Wireless mouse not connecting,Change Mouse
+35,Unknown error message,Call Support
+36,Computer not booting up,Call Support
+37,Laptop feels hot,Clean Fan
+38,Keyboard not responding,Replace Keyboard
+39,Unable to install software,Check Permissions
+40,Mouse buttons not working,Change Mouse
+41,Frequent system crashes,Call Support
+42,Disconnected from VPN,Check Connection
+43,Laptop overheating,Clean Fan
+44,Disconnected from VPN,Check Connection
+45,Keyboard physically damaged,Replace Keyboard
+46,Laptop very hot,Clean Fan
+47,Disconnected from VPN,Check Connection
+48,Keyboard language changed after update,Change Keyboard Language
+49,Wireless mouse not connecting,Change Mouse
+50,Computer slow booting up,Call Support
+51,Computer takes time booting up,Call Support
+52,Computer not booting up,Call Support
+53,Laptop overheating,Clean Fan
+54,Frequent system crashes,Call Support
+55,Disconnected from VPN,Check Connection
+56,Keyboard language changed after update,Change Keyboard Language
+57,Cannot print to network printer,Check Connection
+58,Laptop keyboard not responding,Replace Keyboard
+59,Laptop not booting up,Call Support
+60,Cannot print to network printer,Check Connection
+61,Mouse buttons not working,Change Mouse
+62,Mouse buttons not working,Change Mouse
+63,Cannot print to network printer,Check Connection
+64,Unable to install software,Check Permissions
+65,Laptop keyboard not typing,Replace Keyboard
+66,Fan making loud noise,Clean Fan
+67,Unable to switch keyboard layout,Change Keyboard Language
+68,Keyboard cracked,Replace Keyboard
+69,Wireless mouse not connecting,Change Mouse
+70,Cannot print to network printer,Check Connection
+71,System shutting down due to heat,Clean Fan
+72,Keyboard typing wrong characters,Change Keyboard Language
+73,Internet not working,Check Connection
+74,No keys not responding,Replace Keyboard
+75,Mouse buttons not working,Change Mouse
+76,Keys not responding,Replace Keyboard
+77,Keyboard physically broken,Replace Keyboard
+78,Mouse not moving,Change Mouse
+79,Unable to switch keyboard layout,Change Keyboard Language
+80,Keyboard physically damaged,Replace Keyboard
+81,Computer not booting up,Call Support
+82,Laptop overheating,Clean Fan
+83,Cannot print to network printer,Check Connection
+84,Computer not booting up,Call Support
+85,Internet not working,Check Connection
+86,Mouse not moving,Change Mouse
+87,Frequent system crashes,Call Support
+88,Cannot access shared drive,Check Permissions
+89,Unable to type pound symbol get hash on keyboard,Change Keyboard Language
+90,Keyboard language changed after update,Change Keyboard Language
+91,Access denied to folder,Check Permissions
+92,Internet not working,Check Connection
+93,Access denied to share,Check Permissions
+94,System shutting down due to heat,Clean Fan
+95,Computer not booting up,Call Support
+96,Mouse not moving,Change Mouse
+97,Mouse buttons not working,Change Mouse
+98,Access denied to folder,Check Permissions
+99,Mouse buttons not working,Change Mouse
+100,Keyboard physically damaged,Replace Keyboard
+101, I spilled cola on the keyboard now it doesn't work,Replace Keyboard
+102, Coke spilled on the keyboard now it doesn't work,Replace Keyboard
+103, Coffee was knocked onto the keyboard now it doesn't work,Replace Keyboard
