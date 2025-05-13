@@ -1,6 +1,6 @@
 services:
   iris-classifier:
-    image: iris-classifier
+    image: iris_classifier
     ports:
       - "8501:8501"
     restart: unless-stopped
