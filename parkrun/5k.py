@@ -1,33 +1,46 @@
 import pandas as pd
 import numpy as np
+import re
 import matplotlib.pyplot as plt
 from sklearn.model_selection import train_test_split
 from sklearn.ensemble import RandomForestRegressor
 from sklearn.metrics import mean_absolute_error, r2_score
 from sklearn.preprocessing import OneHotEncoder
 
-# Sample data - in a real implementation, you'd load this from a CSV file
-# Format: age_group, gender, finish_time_seconds
-data = {
-    'age_group': ['18-24', '25-34', '35-44', '45-54', '55-64', '65+',
-                  '18-24', '25-34', '35-44', '45-54', '55-64', '65+',
-                  '18-24', '25-34', '35-44', '45-54', '55-64', '65+'],
-    'gender': ['M', 'M', 'M', 'M', 'M', 'M',
-               'F', 'F', 'F', 'F', 'F', 'F',
-               'M', 'F', 'M', 'F', 'M', 'F'],
-    'finish_time_seconds': [1140, 1200, 1260, 1320, 1380, 1500,
-                            1260, 1320, 1380, 1440, 1560, 1680,
-                            1080, 1200, 1290, 1410, 1440, 1620]
-}
-
-# Create DataFrame
-df = pd.DataFrame(data)
 
 # To load from an actual CSV file, you would do:
-# df = pd.DataFrame(pd.read_csv('parkrun_results.csv'))
+df = pd.DataFrame(pd.read_csv('parkrun.csv'))
+print(df.head())
 
-# Convert finish time to seconds if it's in HH:MM:SS format
-# df['finish_time_seconds'] = pd.to_timedelta(df['finish_time']).dt.total_seconds()
+# Function to convert various time formats to seconds
+def time_to_seconds(time_str):
+    # Check if the time string is valid
+    if pd.isna(time_str) or time_str == '':
+        return None
+
+    # Split the time string by colons
+    parts = time_str.split(':')
+
+    if len(parts) == 2:  # MM:SS format
+        return int(parts[0]) * 60 + int(parts[1])
+    elif len(parts) == 3:  # HH:MM:SS format
+        return int(parts[0]) * 3600 + int(parts[1]) * 60 + int(parts[2])
+    else:
+        # Try to handle other potential formats or return None
+        try:
+            # If it's just seconds or another number format
+            return float(time_str)
+        except:
+            print(f"Warning: Could not parse time format: {time_str}")
+            return None
+
+
+# Apply the conversion
+df['finish_time_seconds'] = df['finish_time'].apply(time_to_seconds)
+
+# Check the result
+print("\nData with converted times:")
+print(df.head())
 
 # One-hot encode categorical features
 encoder = OneHotEncoder(sparse_output=False)
@@ -90,8 +103,8 @@ def predict_time(age_group, gender):
 
 
 # Example prediction
-age_group = '55-64'
-gender = 'M'
+age_group = '60-64'
+gender = 'Male'
 seconds, time_format = predict_time(age_group, gender)
 
 print(f"\nPredicted time for a {gender} runner in age group {age_group}: {time_format}")
