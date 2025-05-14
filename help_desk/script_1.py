@@ -38,7 +38,7 @@ model.fit(X_train, y_train)
 predictions = model.predict(X_test)
 
 # Evaluate the model
-# print("\nAccuracy:", accuracy_score(y_test, predictions))
+print("\nAccuracy:", accuracy_score(y_test, predictions))
 # print("\nClassification Report:\n", classification_report(y_test, predictions, zero_division=0))
 
 
