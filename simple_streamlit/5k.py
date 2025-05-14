@@ -52,6 +52,8 @@ test_predictions = model.predict(X_test)
 # Calculate metrics
 train_mae = mean_absolute_error(y_train, train_predictions)
 test_mae = mean_absolute_error(y_test, test_predictions)
+#R2 is the coefficient of determination 1.- Measures how well the model's predictions approximate the actual data.
+
 r2 = r2_score(y_test, test_predictions)
 
 print(f"Training Mean Absolute Error: {train_mae:.2f} seconds")
@@ -88,8 +90,8 @@ def predict_time(age_group, gender):
 
 
 # Example prediction
-age_group = '35-44'
-gender = 'F'
+age_group = '55-64'
+gender = 'M'
 seconds, time_format = predict_time(age_group, gender)
 
 print(f"\nPredicted time for a {gender} runner in age group {age_group}: {time_format}")
