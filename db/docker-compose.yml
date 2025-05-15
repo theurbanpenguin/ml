@@ -1,0 +1,41 @@
+# Define a custom network for the containers
+networks:
+  app_network:
+    driver: bridge
+
+services:
+  # MySQL Database Service
+  db:
+    image: mysql:8.0
+    container_name: mysql
+    hostname: mysql-host
+    restart: unless-stopped
+    environment:
+      MYSQL_ROOT_PASSWORD: rootpassword  # Change this for production
+      MYSQL_DATABASE: app_db
+      MYSQL_USER: app_user
+      MYSQL_PASSWORD: app_password  # Change this for production
+    volumes:
+      - mysql_data:/var/lib/mysql
+    networks:
+      - app_network
+
+  # Python Application Service
+  app:
+    image: python:slim
+    container_name: python
+    hostname: python-host
+    restart: unless-stopped
+    volumes:
+      - ./app:/app
+    working_dir: /app
+    # You might want to add a command line or entrypoint
+    # command: python app.py
+    networks:
+      - app_network
+    depends_on:
+      - db
+
+# Persist MySQL data between container restarts
+volumes:
+  mysql_data:
