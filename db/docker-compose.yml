@@ -29,8 +29,7 @@ services:
     volumes:
       - ./app:/app
     working_dir: /app
-    # You might want to add a command line or entrypoint
-    # command: python app.py
+    command: bash -c "tail -f /dev/null"
     networks:
       - app_network
     depends_on:
