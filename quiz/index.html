@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Knowledge Area Selector</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+        }
+    </style>
+</head>
+<body class="bg-gradient-to-r from-blue-100 to-purple-100 flex justify-center items-center min-h-screen p-4">
+    <div class="bg-white rounded-lg shadow-xl p-8 w-full max-w-md transition-transform hover:scale-105">
+        <h1 class="text-2xl font-semibold text-blue-600 text-center mb-6">Select a Knowledge Area, Behavior, or Skill</h1>
+        <div id="selection-display" class="text-lg text-gray-700 text-center mb-6 min-h-[3rem]">
+            Click the button to select.
+        </div>
+        <div id="selected-item-display" class="mt-6 p-4 bg-indigo-100 rounded-md text-indigo-700 text-center font-medium border border-indigo-200 hidden">
+        </div>
+        <button id="select-button" class="bg-gradient-to-r from-purple-500 to-pink-500 hover:from-purple-600 hover:to-pink-600 text-white font-semibold rounded-full py-3 px-6 w-full transition-colors duration-300 ease-in-out shadow-md hover:shadow-lg focus:outline-none focus:ring-2 focus:ring-purple-400 focus:ring-opacity-75">
+            Select Random
+        </button>
+        <div class="mt-4 space-x-2 text-center">
+            <button id="knowledge-button" class="bg-blue-200 hover:bg-blue-300 text-blue-700 font-semibold rounded-full py-2 px-4 transition-colors duration-200 ease-in-out focus:outline-none focus:ring-2 focus:ring-blue-400 focus:ring-opacity-75">
+                Knowledge Areas
+            </button>
+            <button id="behavior-button" class="bg-green-200 hover:bg-green-300 text-green-700 font-semibold rounded-full py-2 px-4 transition-colors duration-200 ease-in-out focus:outline-none focus:ring-2 focus:ring-green-400 focus:ring-opacity-75">
+                Behaviors
+            </button>
+             <button id="skill-button" class="bg-yellow-200 hover:bg-yellow-300 text-yellow-700 font-semibold rounded-full py-2 px-4 transition-colors duration-200 ease-in-out focus:outline-none focus:ring-2 focus:ring-yellow-400 focus:ring-opacity-75">
+                Skills
+            </button>
+        </div>
+    </div>
+
+    <script>
+        const knowledgeAreas = [
+            "K1: All stages of the software development life-cycle (what each stage contains, including the inputs and outputs)",
+            "K2: Roles and responsibilities within the software development lifecycle (who is responsible for what)",
+            "K3: The roles and responsibilities of the project life-cycle within your organisation, and your role",
+            "K4: How best to communicate using the different communication methods and how to adapt appropriately to different audiences",
+            "K5: The similarities and differences between different software development methodologies, such as agile and waterfall.",
+            "K6: How teams work effectively to produce software and how to contribute appropriately",
+            "K7: Software design approaches and patterns, to identify reusable solutions to commonly occurring problems",
+            "K8: Organisational policies and procedures relating to the tasks being undertaken, and when to follow them. For example the storage and treatment of GDPR sensitive data.",
+            "K9: Algorithms, logic and data structures relevant to software development for example:- arrays- stacks- queues- linked lists- trees- graphs- hash tables- sorting algorithms- searching algorithms- critical sections and race conditions",
+            "K10: Principles and uses of relational and non-relational databases",
+            "K11: Software designs and functional or technical specifications",
+            "K12: Software testing frameworks and methodologies"
+        ];
+
+        const behaviors = [
+            "B1: Works independently and takes responsibility. For example, has a disciplined and responsible approach to risk and stays motivated and committed when facing challenges",
+            "B2: Applies logical thinking. For example, uses clear and valid reasoning when making decisions related to undertaking work instructions",
+            "B3: Maintains a productive, professional and secure working environment",
+            "B4: Works collaboratively with a wide range of people in different roles, internally and externally, with a positive attitude to inclusion & diversity",
+            "B5: Acts with integrity with respect to ethical, legal and regulatory ensuring the protection of personal data, safety and security.",
+            "B6: Shows initiative and takes responsibility for solving problems within their own remit, being resourceful when faced with a problem to solve.",
+            "B7: Communicates effectively in a variety of situations to both a technical and non-technical audience.",
+            "B8: Shows curiosity to the business context in which the solution will be used, displaying an inquisitive approach to solving the problem. This includes the curiosity to explore new opportunities, techniques and the tenacity to improve methods and maximise performance of the solution and creativity in their approach to solutions.",
+            "B9: Committed to continued professional development."
+        ];
+
+        const skills = [
+            "S1: Create logical and maintainable code",
+            "S2: Develop effective user interfaces",
+            "S3: Link code to data sets",
+            "S4: Test code and analyse results to correct errors found using unit testing",
+            "S5: Conduct a range of test types, such as Integration, System, User Acceptance, Non-Functional, Performance and Security testing.",
+            "S6: Identify and create test scenarios",
+            "S7: Apply structured techniques to problem solving, debug code and understand the structure of programmes in order to identify and resolve issues",
+            "S8: Create simple software designs to effectively communicate understanding of the program",
+            "S9: Create analysis artefacts, such as use cases and/or user stories",
+            "S10: Build, manage and deploy code into the relevant environment",
+            "S11: Apply an appropriate software development approach according to the relevant paradigm (for example object oriented, event driven or procedural)",
+            "S12: Follow software designs and functional or technical specifications",
+            "S13: Follow testing frameworks and methodologies",
+            "S14: Follow company, team or client approaches to continuous integration, version and source control",
+            "S15: Communicate software solutions and ideas to technical and non-technical stakeholders",
+            "S16: Apply algorithms, logic and data structures",
+            "S17: Interpret and implement a given design whist remaining compliant with security and maintainability requirements"
+        ];
+
+        let remainingItems = [...knowledgeAreas]; // Start with knowledge areas
+        let itemType = 'knowledge'; // Default selection type
+
+        const selectionDisplay = document.getElementById('selection-display');
+        const selectButton = document.getElementById('select-button');
+        const selectedItemDisplay = document.getElementById('selected-item-display');
+        const knowledgeButton = document.getElementById('knowledge-button');
+        const behaviorButton = document.getElementById('behavior-button');
+        const skillButton = document.getElementById('skill-button');
+
+        function updateButtonText() {
+            selectButton.textContent = `Select Random ${itemType === 'knowledge' ? 'Area' : itemType === 'behavior' ? 'Behavior' : 'Skill'}`;
+        }
+
+        knowledgeButton.addEventListener('click', () => {
+            remainingItems = [...knowledgeAreas];
+            itemType = 'knowledge';
+            updateButtonText();
+            selectionDisplay.textContent = "Click the button to select a knowledge area.";
+            selectedItemDisplay.classList.add('hidden');
+        });
+
+        behaviorButton.addEventListener('click', () => {
+            remainingItems = [...behaviors];
+            itemType = 'behavior';
+            updateButtonText();
+            selectionDisplay.textContent = "Click the button to select a behavior.";
+            selectedItemDisplay.classList.add('hidden');
+        });
+
+        skillButton.addEventListener('click', () => {
+            remainingItems = [...skills];
+            itemType = 'skill';
+            updateButtonText();
+            selectionDisplay.textContent = "Click the button to select a skill.";
+            selectedItemDisplay.classList.add('hidden');
+        });
+
+        selectButton.addEventListener('click', () => {
+            if (remainingItems.length > 0) {
+                const randomIndex = Math.floor(Math.random() * remainingItems.length);
+                const selectedItem = remainingItems[randomIndex];
+                remainingItems.splice(randomIndex, 1);
+
+                selectionDisplay.textContent = "";
+                selectedItemDisplay.textContent = selectedItem;
+                selectedItemDisplay.classList.remove('hidden');
+                selectedItemDisplay.classList.add('block');
+
+                if (remainingItems.length === 0) {
+                    selectButton.textContent = `All ${itemType === 'knowledge' ? 'areas' : itemType === 'behavior' ? 'behaviors' : 'skills'} selected!`;
+                    selectButton.disabled = true;
+                }
+            } else {
+                selectionDisplay.textContent = `All ${itemType === 'knowledge' ? 'knowledge areas' : itemType === 'behavior' ? 'behaviors' : 'skills'} have been selected.`;
+                selectButton.disabled = true;
+            }
+        });
+
+        updateButtonText(); // Initial button text
+    </script>
+</body>
+</html>
