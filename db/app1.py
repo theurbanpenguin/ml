@@ -16,7 +16,8 @@ def connect_to_mysql():
         connection = mysql.connector.connect(
             host="mysql",
             user="root",
-            password="rootpassword"
+            password="rootpassword",
+            database="app_db"  # Specify the database
         )
         if connection.is_connected():
             db_info = connection.get_server_info()
@@ -61,7 +62,7 @@ def main():
     ### Navigation
     Use the sidebar to navigate between pages:
     - **Main Page** (You are here)
-    - **Page 1** - Additional content
+    - **Page 1** - Products Management
     - **Page 2** - More information
     """)
 

@@ -10,6 +10,15 @@ st.set_page_config(
 st.title("Page 2")
 st.write("This is the second additional page of our multipage application.")
 
+# Check database connection status
+if 'db_connection' in st.session_state and st.session_state['db_connection'] is not None:
+    if st.session_state['db_connection'].is_connected():
+        st.success("Database connection is available on this page")
+    else:
+        st.error("Database connection was established but is no longer active")
+else:
+    st.warning("No database connection available. Return to main page to connect.")
+
 st.markdown("""
 ## Content for Page 2
 
