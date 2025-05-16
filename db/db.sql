@@ -1,6 +1,6 @@
 -- Create the app database if it doesn't exist
 CREATE DATABASE IF NOT EXISTS app;
-USE app;
+USE app_db;
 
 -- Create the products table
 CREATE TABLE IF NOT EXISTS products (
