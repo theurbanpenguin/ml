@@ -14,4 +14,4 @@ ENV STREAMLIT_SERVER_ADDRESS=0.0.0.0
 # Expose the port that Streamlit runs on
 EXPOSE 8501
 # Command to run the web application
-CMD ["streamlit", "run", "app.py"]
+CMD ["streamlit", "run", "app1.py"]
