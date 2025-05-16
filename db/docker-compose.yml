@@ -29,7 +29,7 @@ services:
     volumes:
       - ./app:/app
     working_dir: /app
-    # command: bash -c "tail -f /dev/null"
+    command: bash -c "tail -f /dev/null"
     networks:
       - app_network
     depends_on:
