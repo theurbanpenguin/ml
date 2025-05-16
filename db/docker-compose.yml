@@ -22,7 +22,7 @@ services:
 
   # Python Application Service
   app:
-    image: python:slim
+    image: db_client
     container_name: python
     hostname: python-host
     restart: unless-stopped
