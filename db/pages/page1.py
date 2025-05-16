@@ -81,7 +81,7 @@ if 'db_connection' in st.session_state and st.session_state['db_connection'] is 
                 if success:
                     st.success(message)
                     # Refresh the products list by rerunning the app
-                    st.experimental_rerun()
+                    st.rerun()
                 else:
                     st.error(message)
             elif submit_button and not product_name:
