@@ -19,10 +19,10 @@ def get_products():
         if 'db_connection' in st.session_state and st.session_state['db_connection'] is not None:
             conn = st.session_state['db_connection']
             cursor = conn.cursor()
-            cursor.execute("SELECT id, name FROM products")
+            cursor.execute("SELECT productid, name FROM products")
             result = cursor.fetchall()
 
-            # Convert to dictionary for dropdown {name: id}
+            # Convert to dictionary for dropdown {name: productid}
             products_dict = {row[1]: row[0] for row in result}
             return products_dict
         else:
@@ -33,15 +33,15 @@ def get_products():
 
 
 # Function to add a new order
-def add_order(product_id, quantity):
+def add_order(productid, quantity):
     try:
         if 'db_connection' in st.session_state and st.session_state['db_connection'] is not None:
             conn = st.session_state['db_connection']
             cursor = conn.cursor()
 
             # Insert new order
-            query = "INSERT INTO orders (product_id, quantity) VALUES (%s, %s)"
-            cursor.execute(query, (product_id, quantity))
+            query = "INSERT INTO orders (productid, quantity) VALUES (%s, %s)"
+            cursor.execute(query, (productid, quantity))
             conn.commit()
 
             return True, "Order added successfully!"
@@ -60,10 +60,10 @@ def get_orders():
 
             # Join orders with products to display product names
             query = """
-            SELECT o.id, p.name, o.quantity 
+            SELECT o.orderid, p.name, o.quantity 
             FROM orders o
-            JOIN products p ON o.product_id = p.id
-            ORDER BY o.id DESC
+            JOIN products p ON o.productid = p.productid
+            ORDER BY o.orderid DESC
             """
 
             cursor.execute(query)
@@ -95,7 +95,7 @@ if 'db_connection' in st.session_state and st.session_state['db_connection'] is 
                 product_name = st.selectbox("Select Product", options=list(products.keys()))
 
                 # Get product ID from selected name
-                product_id = products[product_name]
+                productid = products[product_name]
 
                 # Quantity input
                 quantity = st.number_input("Quantity", min_value=1, value=1, step=1)
@@ -104,7 +104,7 @@ if 'db_connection' in st.session_state and st.session_state['db_connection'] is 
                 submit_button = st.form_submit_button("Place Order")
 
                 if submit_button:
-                    success, message = add_order(product_id, quantity)
+                    success, message = add_order(productid, quantity)
                     if success:
                         st.success(message)
                         # Refresh the page to show updated orders
